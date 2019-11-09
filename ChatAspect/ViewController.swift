@@ -296,9 +296,9 @@ extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource, 
       
       if currentMessage["sender"] == "self" {
          cell.bubbleView.frame = CGRect(x: view.frame.width - extimatedFrame.width - 16 - 8, y: 0, width: extimatedFrame.width + 16 + 8, height: extimatedFrame.height + 20)
-         cell.bubbleView.backgroundColor = .blue
+         cell.bubbleView.backgroundColor = AppCustomColors.green
          cell.textView.frame = CGRect(x: (view.frame.width - extimatedFrame.width) - 16, y: 0, width: extimatedFrame.width + 16, height: extimatedFrame.height + 20)
-         cell.textView.textColor = .white
+         cell.textView.textColor = .black
          
       } else {
          cell.nameLabel.text = currentMessage["sender"]
@@ -433,13 +433,5 @@ extension ViewController: UITextViewDelegate {
       }
       
       previousRect = currentRect
-   }
-}
-
-
-
-extension UINavigationController {
-   override open var preferredStatusBarStyle: UIStatusBarStyle {
-      return topViewController?.preferredStatusBarStyle ?? .default
    }
 }
