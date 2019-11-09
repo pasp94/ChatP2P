@@ -61,6 +61,9 @@ class ViewController: UIViewController {
    private var bottomConstraint: NSLayoutConstraint!
    private var heightCostraint: NSLayoutConstraint!
    
+   override var preferredStatusBarStyle: UIStatusBarStyle {
+      return .lightContent
+   }
    
    override func viewDidLoad() {
       super.viewDidLoad()
@@ -102,6 +105,7 @@ class ViewController: UIViewController {
       logoImgView.contentMode = .scaleAspectFit
       
       self.barItem.titleView = logoImgView
+      self.navigationController?.navigationBar.barTintColor = .black
    }
    
    private func setupContainer() {
@@ -434,3 +438,8 @@ extension ViewController: UITextViewDelegate {
 
 
 
+extension UINavigationController {
+   override open var preferredStatusBarStyle: UIStatusBarStyle {
+      return topViewController?.preferredStatusBarStyle ?? .default
+   }
+}
