@@ -47,10 +47,12 @@ class ViewController: UIViewController {
    
    private let sendButton: UIButton = {
       let button = UIButton()
-      button.setTitle("SEND", for: .normal)
-      button.titleLabel?.font = UIFont.systemFont(ofSize: 15, weight: .medium)
-      button.setTitleColor(.white, for: .normal)
-      button.backgroundColor = .blue
+      let image = UIImage(named: "SendBtn")
+      let imageView = UIImageView(image: image)
+      
+      button.backgroundColor = .black
+      button.setImage(image, for: .normal)
+      button.imageView?.contentMode = .scaleAspectFit
       button.layer.cornerRadius = 16
       
       return button
@@ -104,11 +106,11 @@ class ViewController: UIViewController {
    
    private func setupContainer() {
       view.addSubview(inputTextContainer)
-      
       inputTextContainer.translatesAutoresizingMaskIntoConstraints = false
       inputTextContainer.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 1).isActive = true
-      //    inputTextContainer.heightAnchor.constraint(equalToConstant: 48).isActive = true
    }
+   
+   /// Todo: Improve conteiner layout and make it adaptable to iOS/iPadOS devices
    
    private func setupContainerComponents() {
       inputTextContainer.addSubview(backTFView)
@@ -118,7 +120,7 @@ class ViewController: UIViewController {
       backTFView.topAnchor.constraint(equalTo: inputTextContainer.topAnchor, constant: 8).isActive = true
       backTFView.bottomAnchor.constraint(equalTo: inputTextContainer.bottomAnchor, constant: -8).isActive = true
       backTFView.leftAnchor.constraint(equalTo: inputTextContainer.leftAnchor, constant: 10).isActive = true
-      backTFView.rightAnchor.constraint(equalTo: inputTextContainer.rightAnchor, constant: -90).isActive = true // avevo -100
+      backTFView.rightAnchor.constraint(equalTo: inputTextContainer.rightAnchor, constant: -60).isActive = true // avevo -100
       
       backTFView.addSubview(chatTextView)
       
@@ -137,7 +139,7 @@ class ViewController: UIViewController {
       sendButton.topAnchor.constraint(equalTo: inputTextContainer.topAnchor, constant: 8).isActive = true
       sendButton.bottomAnchor.constraint(equalTo: inputTextContainer.bottomAnchor, constant: -8).isActive = true
       sendButton.leftAnchor.constraint(equalTo: backTFView.rightAnchor, constant: 10).isActive = true
-      sendButton.rightAnchor.constraint(equalTo: inputTextContainer.rightAnchor, constant: -10).isActive = true
+      sendButton.rightAnchor.constraint(equalTo: inputTextContainer.rightAnchor, constant: -15).isActive = true
       
       
       sendButton.addTarget(self, action: #selector(sendMessage), for: .touchUpInside)
